@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Authors>Biplov KC</Authors>
+		<OutputType>Library</OutputType>
+		<PackageId>Biplov.EventBus.RabbitMQ</PackageId>
+		<PackageProjectUrl>https://github.com/biplovkc/event-bus-rabbitmq</PackageProjectUrl>
+		<PackageTags>Biplov;BiplovKC;MessageBroker;EventBus;RabbitMQ</PackageTags>
+		<AssemblyName>Biplov.EventBus.RabbitMQ</AssemblyName>
+		<RootNameSpace>Biplov.EventBus.RabbitMQ</RootNameSpace>
+		<TargetFramework>net6.0</TargetFramework>
+		<Description>Event bus implementation targeting RabbitMQ.</Description>
+		<LangVersion>latest</LangVersion>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="6.5.0" />
+		<PackageReference Include="Biplov.EventBus" Version="0.1.2" />
+		<PackageReference Include="Polly" Version="7.2.3" />
+		<PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+	</ItemGroup>
+
+</Project>
