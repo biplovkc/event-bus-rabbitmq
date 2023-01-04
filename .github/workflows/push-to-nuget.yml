@@ -9,7 +9,7 @@ jobs:
   build:
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'Biplov.EventBusRabbitMQ.sln'
+      SOLUTION: 'Biplov.EventBus.RabbitMQ.sln'
 
     runs-on: ubuntu-latest
 
