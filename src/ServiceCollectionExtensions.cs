@@ -1,6 +1,6 @@
 ﻿namespace Biplov.EventBus.RabbitMQ;
 
-public static class Extensions
+public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddRabbitMqEventBus(this IServiceCollection services, ILogger logger, string subscriptionClientName, int serviceBusRetryCount = 5) =>
         services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
@@ -20,10 +20,15 @@ public static class Extensions
             var factory = new ConnectionFactory
             {
                 HostName = hostName,
-                DispatchConsumersAsync = true,
-                UserName = userName,
-                Password = password
+                DispatchConsumersAsync = true
             };
+
+            if (!string.IsNullOrWhiteSpace(userName))
+                factory.UserName = userName;
+
+            if (!string.IsNullOrWhiteSpace(password))
+                factory.Password = password;
+            
             return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
         });
     }
