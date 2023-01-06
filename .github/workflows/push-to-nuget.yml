@@ -50,6 +50,26 @@ jobs:
       - name: Build
         run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=${{ steps.gitversion.outputs.semVer }} --no-restore
 
+      # Set up Node.js
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      # Install dependencies
+      - run: npm install
+
+      # Generate release notes
+      - run: npx release-notes > release-notes.txt
+
+      # Create the release
+      - uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.gitversion.outputs.semVer }}
+          release_name: Release ${{ steps.gitversion.outputs.semVer }}
+          body_path: release-notes.txt
+
       - name: Publish
         run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
 
