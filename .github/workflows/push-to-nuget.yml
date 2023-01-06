@@ -50,16 +50,11 @@ jobs:
       - name: Build
         run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=${{ steps.gitversion.outputs.semVer }} --no-restore
 
-      # Set up Node.js
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-
-      # Install dependencies
-      - run: npm install
+      # Install GitReleaseManager
+      - run: dotnet tool install -g GitReleaseManager
 
       # Generate release notes
-      - run: npx release-notes > release-notes.txt
+      - run: gitreleasemanager changelog > release-notes.txt
 
       # Create the release
       - uses: actions/create-release@v1
