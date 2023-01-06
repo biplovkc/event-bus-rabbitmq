@@ -54,7 +54,7 @@ jobs:
       - run: dotnet tool install -g GitReleaseManager.Tool
 
       # Generate release notes
-      - run: dotnet-gitreleasemanager export --token ${{ secrets.GITHUB_TOKEN }} -o "@BiplovKC" -r biplovkc/event-bus-rabbitmq -f release-notes.md
+      - run: dotnet-gitreleasemanager export --token ${{ secrets.GITHUB_TOKEN }} -o "BiplovKC" -r event-bus-rabbitmq -f release-notes.md
 
       # Create the release
       - uses: actions/create-release@v1
