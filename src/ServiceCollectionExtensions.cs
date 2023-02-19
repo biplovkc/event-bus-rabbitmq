@@ -6,7 +6,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
         {
             var rabbitMqPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-            var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+            var iLifetimeScope = sp.GetRequiredService<IServiceProvider>();
             var eventBusSubscriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
             return new EventBusRabbitMQ(rabbitMqPersistentConnection, logger, iLifetimeScope, eventBusSubscriptionsManager, subscriptionClientName, serviceBusRetryCount);

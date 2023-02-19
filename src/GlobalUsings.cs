@@ -5,7 +5,6 @@ global using System.Net.Sockets;
 global using System.Text;
 global using System.Text.Json;
 global using System.Threading.Tasks;
-global using Autofac;
 global using Biplov.EventBus.Abstractions;
 global using Biplov.EventBus.Events;
 global using Biplov.EventBus.Extensions;
