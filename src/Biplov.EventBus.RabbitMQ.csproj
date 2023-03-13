@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<Authors>Biplov KC</Authors>
 		<OutputType>Library</OutputType>
+		<Title>RabbitMQ Event Bus</Title>
 		<PackageId>Biplov.EventBus.RabbitMQ</PackageId>
 		<PackageProjectUrl>https://github.com/biplovkc/event-bus-rabbitmq</PackageProjectUrl>
 		<PackageTags>Biplov;BiplovKC;MessageBroker;EventBus;RabbitMQ</PackageTags>
@@ -12,9 +13,27 @@
 		<Description>Event bus implementation targeting RabbitMQ.</Description>
 		<LangVersion>latest</LangVersion>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	</PropertyGroup>
+		<DebugSymbols>true</DebugSymbols>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 
+		<!-- Embed source files that are not tracked by the source control manager in the PDB -->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+		<!-- Recommended: Embed symbols containing Source Link in the main file (exe/dll) -->
+		<DebugType>embedded</DebugType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
 	<ItemGroup>
+		<None Include="../README.md" Pack="true" PackagePath="."/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
 		<PackageReference Include="Biplov.EventBus" Version="0.1.4" />
 		<PackageReference Include="Polly" Version="7.2.3" />
 		<PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
