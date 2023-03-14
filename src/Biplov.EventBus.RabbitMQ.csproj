@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<Authors>Biplov KC</Authors>
@@ -30,11 +30,11 @@
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 	<ItemGroup>
-		<None Include="../README.md" Pack="true" PackagePath="."/>
+		<None Include="../README.md" Pack="true" PackagePath="." />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-		<PackageReference Include="Biplov.EventBus" Version="0.1.4" />
+		<PackageReference Include="Biplov.EventBus" Version="0.1.6" />
 		<PackageReference Include="Polly" Version="7.2.3" />
 		<PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
 		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
