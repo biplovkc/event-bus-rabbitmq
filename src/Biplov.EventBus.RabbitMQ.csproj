@@ -33,7 +33,7 @@
 		<None Include="../README.md" Pack="true" PackagePath="." />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Biplov.EventBus" Version="0.1.11" />
+		<PackageReference Include="Biplov.EventBus" Version="0.1.12" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
 		<PackageReference Include="Polly" Version="7.2.3" />
 		<PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
