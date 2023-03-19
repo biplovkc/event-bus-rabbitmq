@@ -13,14 +13,15 @@ public static class ServiceCollectionExtensions
         });
 
     public static IServiceCollection RegisterRabbitMqConnection(this IServiceCollection services, ILogger logger, string hostName,
-        string userName, string password, int retryCount = 5)
+        string userName, string password, string vHost = null, int port = 5672, int retryCount = 5)
     {
         return services.AddSingleton<IRabbitMQPersistentConnection>(_ =>
         {
             var factory = new ConnectionFactory
             {
                 HostName = hostName,
-                DispatchConsumersAsync = true
+                DispatchConsumersAsync = true,
+                Port = port
             };
 
             if (!string.IsNullOrWhiteSpace(userName))
@@ -28,6 +29,9 @@ public static class ServiceCollectionExtensions
 
             if (!string.IsNullOrWhiteSpace(password))
                 factory.Password = password;
+
+            if (!string.IsNullOrWhiteSpace(vHost))
+                factory.VirtualHost = vHost;
             
             return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
         });
